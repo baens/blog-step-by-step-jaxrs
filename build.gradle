@@ -1,0 +1,44 @@
+/**
+ * This section is for all of the plugins we need to make this work. 
+ * Kotlin, the fat jar builder, and flag it 
+ * as an application so `./gradlew run` will work
+ */
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.21'
+    id 'com.github.johnrengelman.shadow' version '2.0.2'
+}
+
+apply plugin: 'application'
+
+/**
+ * Standard dependency section for gradle. 
+ * Define the kotlin standard library for
+ * Java 8.
+ */
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8'
+}
+
+/**
+ * Personal preference. I hate having src/main/kotlin
+ * be the root, so I change it that 'src'
+ * as the root of my source directory.
+ */
+sourceSets {
+    main.kotlin.srcDirs += 'src'
+}
+
+// Define the main startup class and jar name
+mainClassName = 'ServerKt'
+archivesBaseName = 'step-by-step-kotlin-hello-world-jaxrs'
+
+// tell the jar which class to startup in.
+jar {
+    manifest {
+        attributes 'Main-Class': 'ServerKt'
+    }
+}  
