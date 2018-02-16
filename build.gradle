@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8'
+    compile "org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.26"
 }
 
 /**
@@ -41,4 +42,10 @@ jar {
     manifest {
         attributes 'Main-Class': 'ServerKt'
     }
-}  
+}
+
+// Properties for `./gradlew run`
+run {
+    standardInput = System.in
+    environment = ["SHUTDOWN_TYPE" : "INPUT"]
+}

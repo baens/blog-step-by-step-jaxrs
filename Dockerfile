@@ -11,4 +11,6 @@ FROM openjdk:${VERSION}-jre
 COPY --from=BUILD /src/build/libs/step-by-step-kotlin-hello-world-jaxrs-all.jar /bin/runner/run.jar
 WORKDIR /bin/runner
 
+EXPOSE 8080
+
 CMD ["java","-jar","run.jar"]
