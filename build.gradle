@@ -19,10 +19,13 @@ repositories {
     mavenCentral()
 }
 
+def jerseyVersion = "2.26"
+
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8'
-    compile "org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.26"
-    compile "org.glassfish.jersey.inject:jersey-hk2:2.26"
+    compile "org.glassfish.jersey.containers:jersey-container-grizzly2-http:${jerseyVersion}"
+    compile "org.glassfish.jersey.inject:jersey-hk2:${jerseyVersion}"
+    compile "org.glassfish.jersey.media:jersey-media-json-jackson:${jerseyVersion}"
 }
 
 /**
